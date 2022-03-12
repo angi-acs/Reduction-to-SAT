@@ -1,0 +1,49 @@
+Corina-Angi Bălănescu
+321 CD
+
+Rețele sociale - Task 1
+Am asociat cerința cu un graf neorientat în care caut o clică de dimensiune k:
+- membrii rețelei sociale - noduri
+- relațiile de prietenie - muchii
+- grupul de persoane căutat - o clică.
+Soluția oracolului reprezintă nodurile din graf care formează o clică de dimensiunea
+specificată în test, adică ce persoane alcătuiesc grupul potrivit pentru expus persoane.
+
+Reclame buclucașe - Task 2
+Am asociat cerința cu un graf neorientat în care caut o acoperire de dimensiune k,
+unde k este minim:
+- persoanele din rețea - noduri
+- relațiile de prietenie - muchii.
+Soluția oracolului reprezintă nodurile din graf care formează un grup esențial, adică
+fără aceste noduri, respectiv muchiile lor, nodurile rămase nu mai sunt interconectate.
+
+Alocarea regiștrilor - Task 3
+Am asociat cerința cu un graf neorientat care trebuie colorat cu cel mult k culori:
+- variabilele necesare - noduri
+- relațiile dintre acestea - muchii
+- o relație între 2 variabile reprezintă faptul că acestea nu pot fi puse în același
+  registru <-> două noduri adiacente nu pot avea aceeași culoare.
+Soluția oracolului reprezintă culoarea fiecărui nod, adică numărul registrului asignat
+fiecărei variabile. Ordinea în care apar culorile este dată de sortarea crescătoare a
+nodurilor.
+
+Precizări legate de implementare:
+1. Am reținut graful sub formă de Map<Integer, List<Integer>>, unde key reprezintă nodul,
+   iar value lista nodurilor adiacente.
+2. La o citire, nu adaug nodurile reciproc în lista de adiacență deoarece verificarea
+   într-o singură direcție a existenței unei muchii între două noduri este de ajuns când
+   graful este neorientat.
+3. Numărul de clauze pentru fiecare condiție care trebuie îndeplinită este precizat
+   (și explicat dacă a fost cazul) deasupra codului care corespunde tipului de clauză
+4. Notația Xiv reprezintă numărul asignat unei variabile dintr-o clauză, unde i este
+   poziția (respectiv culoarea) și v este numărul nodului din graful inițial.
+   Xiv = i * vertices + v, unde vertices reprezintă numărul total de noduri
+5. Pentru afișare am folosit următoarele formule pentru a tranforma soluția oracolului
+   din variabile în noduri (sau culori):
+   - v = Xiv % vertices (nodul din graf)
+     (excepție când nodul este ultimul, atunci v = vertices)
+   - i = Xiv / vertices + 1 (poziția sau culoarea)
+     (excepție când nodul este ultimul, atunci i nu se mai incrementează)
+6. Afișarea nodurilor nu este ordonată și pentru primele 2 task-uri nu este nici necesară.
+   În cadrul celui de-al 3-lea însă, am folosit o funcție de sortare astfel încât poziția
+   pe care apare o culoare în răspuns să corespundă numărului unui nod.
